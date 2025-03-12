@@ -1,24 +1,29 @@
 // Copyright 2022 UNN-CS
-#include <cmath>
-#include "tasks.h"
-#include "circle.h"
+#ifndef INCLUDE_CIRCLE_H_
+#define INCLUDE_CIRCLE_H_
 
-double calculateRopeGap(double earthRadius) {
-    Circle earth(earthRadius);
-    double newFerence = earth.getFerence() + 1.0;
-    earth.setFerence(newFerence);
-    return earth.getRadius() - earthRadius;
-}
+#include <cstdint>
 
-double calculatePoolCost(double poolRadius, double pathWidth) {
-    Circle pool(poolRadius);
-    Circle path(poolRadius + pathWidth);
+class Circle {
+private:
+    double radius;
+    double ference;
+    double area;
 
-    double pathArea = path.getArea() - pool.getArea();
-    double fenceLength = path.getFerence();
+    void calculateFromRadius();
+    void calculateFromFerence();
+    void calculateFromArea();
 
-    double pathCost = pathArea * 1000;
-    double fenceCost = fenceLength * 2000;
+public:
+    explicit Circle(double r);
 
-    return pathCost + fenceCost;
-}
+    void setRadius(double r);
+    void setFerence(double f);
+    void setArea(double a);
+
+    double getRadius() const;
+    double getFerence() const;
+    double getArea() const;
+};
+
+#endif  // INCLUDE_CIRCLE_H_
