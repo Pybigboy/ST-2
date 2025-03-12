@@ -5,7 +5,7 @@
 #include <cstdint>
 
 class Circle {
-private:
+ private:
     double radius;
     double ference;
     double area;
@@ -14,7 +14,7 @@ private:
     void calculateFromFerence();
     void calculateFromArea();
 
-public:
+ public:
     explicit Circle(double r);
 
     void setRadius(double r);
@@ -25,5 +25,6 @@ public:
     double getFerence() const;
     double getArea() const;
 };
+
 
 #endif  // INCLUDE_CIRCLE_H_
